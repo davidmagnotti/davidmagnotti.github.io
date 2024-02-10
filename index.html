@@ -1,114 +1,46 @@
 <html>
 <head>
- <title>Speedy Box</title>
+ <title>David Magnotti</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" /> 
+ <style type="text/css">
+ body
+ {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: "San Serif", "Calibri";
+ }
+ h1#author
+ {
+  background-color: #333333;
+  border-radius: 10px;
+  color: #f0f0f0;
+  text-align: center;
+  padding: 5px;
+ }
+
+ h3#links
+ {
+  text-align: center;
+ }
+
+ h1#projects
+ {
+  border-radius: 10px;
+  background-color: #0055ee;
+  color: #ffffff;
+  width: 120px;
+  padding: 5px;
+ }
+ </style>
 </head>
-<script type="text/javascript">
-// 0 is not started or game over, 1 is active
-var state = 0;
-
-var score = 0;
-
-// Boundary points
-var leftBound = 0;
-var rightBound = 0;
-
-// 0 is left, 1 is right
-var cursorDirection = 0;
-
-// X coordinate of cursor position
-var cursorPosition = 1;
-
-// Variable speed of cursor
-var cursorSpeed = 0;
-
-function Tap()
-{
-  if (state === 0)
-  {
-    ClearScreen();
-
-    state = 1;
-    leftBound = 10;
-    rightBound = 250;
-    cursorPosition = 20;
-    cursorDirection = 1;
-    cursorSpeed = 0;
-    score = 0;
-
-    UpdateScreen();
-  }
-  else
-  {
-    // update score counter and move boundary
-    cursorDirection = cursorDirection ^ 1;
-    score = score + 1;
-    cursorSpeed = cursorSpeed + 3;
-  }
-}
-
-function ClearScreen()
-{
-  var canvas = document.getElementById("gameCanvas");
-  var ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, 300, 100);
-}
-
-// Update position of left bound, right bound, and cursor with direction
-function UpdateScreen()
-{
-  var canvas = document.getElementById("gameCanvas");
-  var ctx = canvas.getContext("2d");
-
-  // check if collision occurred, if so, end game
-  if (cursorPosition <= leftBound || cursorPosition >= rightBound)
-  {
-    ctx.clearRect(0, 0, 300, 100);
-    state = 0;
-    ctx.fillText('game over', 20, 20);
-    return;
-  }
-
-  ctx.clearRect(0, 0, 400, 100);
-
-  // if game is still going, update cursor location
-  if (cursorDirection === 0)
-  {
-    cursorPosition = cursorPosition - 5 - cursorSpeed;
-  }
-  else
-  {
-    cursorPosition = cursorPosition + 5 + cursorSpeed;
-  }
-
-  // draw our cursor
-  ctx.beginPath();
-  ctx.rect(cursorPosition, 20, 50, 30);
-  ctx.stroke();
-
-  // update left and right boundaries
-  ctx.rect(leftBound, 10, 10, 50);
-  ctx.rect(rightBound, 10, 10, 50);
-
-  ctx.stroke();
-
-  // draw score counter
-  ctx.fillText(score, 300, 20);
-
-  // continue our ticks by re-running setTimeout calls
-  setTimeout(UpdateScreen, 50);
-}
-function ShowStart()
-{
-  var canvas = document.getElementById("gameCanvas");
-  var ctx = canvas.getContext("2d");
-  ctx.font = "18px Arial Bold";
-  ctx.fillText('tap to start', 50, 50);
-}
-</script>
-<body onload="ShowStart()">
- <p>
-  <canvas id="gameCanvas" width="350" height="100" style="border: 1px #000000 solid;" onclick="Tap()">
- </canvas>
-  </p>
+<body>
+<h1 id="author">David Magnotti</h1>
+<hr />
+<h3 id="links"><a href="https://github.com/davidmagnotti/">GitHub</a> | <a href="https://www.linkedin.com/in/david-magnotti-a3697835">LinkedIn</a> | <a href="https://twitter.com/davidmagnotti">Twitter</a></h3>
+<hr />
+<h1 id="projects">Projects</h1>
+ <ul>
+  <li><a href="/speedybox.html">Speedy Box</a> | Keep the box between the boundaries</li>
+ </ul>
 </body>
 </html>
