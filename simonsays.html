@@ -1,0 +1,206 @@
+<html>
+<head>
+ <title>Simon Says</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" /> 
+</head>
+<script type="text/javascript">
+// 0 is not started or game over, 1 is active
+var state = 0;
+var score = 0;
+
+// Pattern
+var pattern = [];
+var colors = ["red", "blue", "green", "orange"];
+var p = 0;
+
+// Boundary points
+var leftBoxX, rightBoxX, topBoxX, bottomBoxX;
+var leftBoxY, rightBoxY, topBoxY, bottomBoxY;
+
+var boxWidth = 100;
+var boxHeight = 100;
+
+// 0 is left, 1 is right
+var cursorDirection = 0;
+
+function Tap(event)
+{
+  if (state === 0)
+  {
+    ClearScreen();
+
+    state = 1;
+    leftBoxX = 10;
+    leftBoxY = 150;
+
+    rightBoxX = 230;
+    rightBoxY = 150;
+
+    topBoxX = 120;
+    topBoxY = 30;
+
+    bottomBoxX = 120;
+    bottomBoxY = 270;
+
+    score = 0;
+
+    DrawScreen();
+    pattern.push(Math.floor(Math.random() * 4));
+    ShowPattern(0);
+  }
+  else
+  {
+    box = -1;
+    if (leftBoxX < event.clientX && leftBoxX + boxWidth > event.clientX &&
+        leftBoxY < event.clientY && leftBoxY + boxHeight > event.clientY)
+    {
+      box = 0;
+      DrawBox(leftBoxX, leftBoxY, colors[box], 300);
+    }
+    else if (rightBoxX < event.clientX && rightBoxX + boxWidth > event.clientX &&
+        rightBoxY < event.clientY && rightBoxY + boxHeight > event.clientY)
+    {
+      box = 1;
+      DrawBox(rightBoxX, rightBoxY, colors[box], 300);
+    }
+    else if (topBoxX < event.clientX && topBoxX + boxWidth > event.clientX &&
+        topBoxY < event.clientY && topBoxY + boxHeight > event.clientY)
+    {
+      box = 2;
+      DrawBox(topBoxX, topBoxY, colors[box], 300);
+    }
+    else if (bottomBoxX < event.clientX && bottomBoxX + boxWidth > event.clientX &&
+        bottomBoxY < event.clientY && bottomBoxY + boxHeight > event.clientY)
+    {
+      box = 3;
+      DrawBox(bottomBoxX, bottomBoxY, colors[box], 1300);
+    }
+
+    if (box == -1)
+    {
+      return;
+    }
+
+    // if the pattern is wrong, the game ends
+    if (p < pattern.length && pattern[p] != box)
+    {
+      var canvas = document.getElementById("gameCanvas");
+      var ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 20, 400, 400);
+      ctx.fillStyle = "black";
+      ctx.fillText('game over, tap to start over', 20, 20);
+      state = 0;
+      pattern = [];
+    }
+    else
+    {
+      if (p + 1 < pattern.length)
+      {
+        p += 1;
+      }
+      else
+      {
+        score += 1;
+        p = 0;
+        pattern.push(Math.floor(Math.random() * 4));
+        setTimeout(DrawScreen, 200);
+        setTimeout(ShowPattern, 1000, 0);
+      }
+    }
+  }
+}
+
+function ClearScreen()
+{
+  var canvas = document.getElementById("gameCanvas");
+  var ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, 350, 400);
+}
+
+function ShowPattern(i)
+{
+  if (state == 0)
+  {
+    return;
+  }
+  if (i == pattern.length)
+  {
+    return;
+  }
+  var canvas = document.getElementById("gameCanvas");
+  var ctx = canvas.getContext("2d");
+
+  var n = pattern[i];
+  if (n == 0)
+  {
+    DrawBox(leftBoxX, leftBoxY, colors[n], 500);
+  }
+  else if (n == 1)
+  {
+    DrawBox(rightBoxX, rightBoxY, colors[n], 500);
+  }
+  else if (n == 2)
+  {
+    DrawBox(topBoxX, topBoxY, colors[n], 500);
+  }
+  else if (n == 3)
+  {
+    DrawBox(bottomBoxX, bottomBoxY, colors[n], 500);
+  }
+  setTimeout(ShowPattern, 1000, i + 1);
+}
+
+function DrawBox(x, y, color, ts)
+{
+  if (state == 0)
+  {
+    return;
+  }
+  var canvas = document.getElementById("gameCanvas");
+  var ctx = canvas.getContext("2d");
+  ctx.beginPath();
+  ctx.fillStyle = color;
+  ctx.clearRect(x, y, boxWidth, boxHeight);
+  ctx.fillRect(x, y, boxWidth, boxHeight);
+  ctx.stroke();
+  if (color != "black")
+  {
+      setTimeout(DrawBox, ts, x, y, "black");
+  }
+}
+
+// Draw our boxes
+function DrawScreen()
+{
+  var canvas = document.getElementById("gameCanvas");
+  var ctx = canvas.getContext("2d");
+
+  // draw our boxes
+  ctx.beginPath();
+  ctx.clearRect(0, 0, 350, 400);
+  ctx.fillStyle = "black";
+  ctx.fillRect(bottomBoxX, bottomBoxY, boxWidth, boxHeight);
+  ctx.fillRect(topBoxX, topBoxY, boxWidth, boxHeight);
+  ctx.fillRect(leftBoxX, leftBoxY, boxWidth, boxHeight);
+  ctx.fillRect(rightBoxX, rightBoxY, boxWidth, boxHeight);
+  ctx.stroke();
+
+  // draw score counter
+  ctx.fillText(score, 300, 20);
+}
+
+function ShowStart()
+{
+  var canvas = document.getElementById("gameCanvas");
+  var ctx = canvas.getContext("2d");
+  ctx.font = "18px Arial Bold";
+  ctx.fillText('tap to start, and copy the pattern', 50, 50);
+}
+</script>
+<body onload="ShowStart()">
+ <p>
+  <canvas id="gameCanvas" width="350" height="400" style="border: 1px #000000 solid;" onclick="Tap(event)">
+ </canvas>
+  </p>
+</body>
+</html>
