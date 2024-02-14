@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>flappy ball</title>
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height,
+      user-scalable=no, initial-scale=1, maximum-scale=1"
+    />
+    <script src="https://unpkg.com/sounds-some-sounds@3.0.0/build/index.js"></script>
+    <script src="https://unpkg.com/gif-capture-canvas@1.1.0/build/index.js"></script>
+    <script src="https://unpkg.com/pixi.js@5.3.0/dist/pixi.min.js"></script>
+    <script src="https://unpkg.com/pixi-filters@3.1.1/dist/pixi-filters.js"></script>
+    <script src="https://unpkg.com/crisp-game-lib@1.1.1/docs/bundle.js"></script>
+
+<script>
+title = "flappy box";
+
+characters = [
+  `
+  rrr
+ rr  rr
+  rrr
+  `
+];
+
+description = `
+    [Tap] to
+     make
+    box move
+`;
+
+let ball;
+
+let boxesBottom = [];
+let boxesTop = [];
+
+options = {
+ isReplayEnabled: true,
+ theme: "dark"
+};
+
+function update() {
+  if (!ticks) {
+    ball = {
+      pos: vec(10, 10)
+    };
+    return;
+  }
+
+  if (input.isJustPressed)
+  {
+    ball.pos.y -= 15;
+  }
+  else
+  {
+    if (ball.pos.y < 100)
+    {
+      ball.pos.y += 0.5;
+    }
+  }
+
+  // if collides with box, it's game over
+  boxesBottom.forEach((box) =>
+   {
+     color("yellow");
+     box.pos.x -= 1;
+     rect(box.pos.x, 100 - box.pos.y, 10, box.pos.y);
+   }
+  );
+  boxesTop.forEach((box) =>
+   {
+     color("yellow");
+     box.pos.x -= 1;
+     rect(box.pos.x, 0, 10, box.pos.y);
+   }
+  );
+
+  remove(boxesTop, (box) => {
+    return box.pos.x < 0;
+  });
+  remove(boxesBottom, (box) => {
+    return box.pos.x < 0;
+  });
+
+  if (boxesBottom.length < 5)
+  {
+    addScore(0.2);
+     boxesTop.push(
+      {
+      pos: vec(90, rnd(10, 40))
+     });
+     boxesBottom.push({
+      pos: vec(70, rnd(10, 40))
+     });
+  }
+  
+  drawPlatforms();
+}
+
+function drawPlatforms() { 
+ color("black");
+ a = char("a", ball.pos);
+
+ if (a.isColliding.rect.yellow)
+ {
+  end();
+  boxesBottom = [];
+  boxesTop = [];
+ }
+}
+
+addEventListener("load", onLoad);
+</script>
+
+  </head>
+  <body style="background: #eeeeee"></body>
+</html>
