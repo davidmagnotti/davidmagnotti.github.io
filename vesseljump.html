@@ -34,12 +34,11 @@ description = `
 let vessel;
 
 let boxes;
-let randomFlyingBox;
+let randomFlyingBox1, randomFlyingBox2;
 
 let width;
 let score;
 let speed;
-let double_jump;
 
 options = {
  isReplayEnabled: true,
@@ -52,16 +51,16 @@ function update() {
       pos: vec(10, 98)
     };
     boxes = [];
-    randomFlyingBox = [];
+    randomFlyingBox1 = [];
+    randomFlyingBox2 = [];
     score = 1;
-    speed = 1;
-    double_jump = false;
+    speed = 1.2;
     return;
   }
 
   if (input.isJustPressed)
   {
-    if (vessel.pos.y >= 80 || (vessel.pos.y >= 40 && double_jump))
+    if (vessel.pos.y >= 40)
     {
      vessel.pos.y -= 40;
     }
@@ -77,20 +76,20 @@ function update() {
   // if collides with box, it's game over
   boxes.forEach((box) =>
    {
-     if (box.pos.y > 10)
-     {
-      color("red");
-     }
-     else
-     {
-      color("yellow");
-     }
+     color("red");
      box.pos.x -= speed;
      rect(box.pos.x, 100 - box.pos.y, width, box.pos.y);
    }
   );
 
-  randomFlyingBox.forEach((box) =>
+  randomFlyingBox1.forEach((box) =>
+  {
+    color("blue");
+    box.pos.x -= (speed * 2);
+    rect(box.pos.x, 90 - box.pos.y, width, box.pos.y);
+  });
+
+  randomFlyingBox2.forEach((box) =>
   {
     color("purple");
     box.pos.x -= (speed * 3);
@@ -101,7 +100,11 @@ function update() {
     return box.pos.x < 0;
   });
 
-  remove(randomFlyingBox, (box) => {
+  remove(randomFlyingBox1, (box) => {
+    return box.pos.x < 0;
+  });
+
+  remove(randomFlyingBox2, (box) => {
     return box.pos.x < 0;
   });
 
@@ -121,7 +124,14 @@ function update() {
     
     if (rnd(1, 3) > 2)
     {
-      randomFlyingBox.push({
+      randomFlyingBox1.push({
+        pos: vec(100, rnd(5, 20))
+      });
+    }
+
+    if (rnd(1, 3) > 2)
+    {
+      randomFlyingBox2.push({
         pos: vec(100, rnd(5, 20))
       });
     }
@@ -135,15 +145,10 @@ function drawPlatforms() {
  color("black");
  a = char("a", vessel.pos);
 
- if (a.isColliding.rect.red || a.isColliding.rect.purple)
+ if (a.isColliding.rect.red || a.isColliding.rect.purple || a.isColliding.rect.blue)
  {
   end();
   boxes = [];
- }
-
- if (a.isColliding.rect.yellow)
- {
-  double_jump = true;
  }
 }
 

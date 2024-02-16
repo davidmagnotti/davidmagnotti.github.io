@@ -28,13 +28,15 @@ characters = [
 description = `
     [Tap] to
      make
-    box move
+    ball go high
 `;
 
 let ball;
 
 let boxesBottom = [];
 let boxesTop = [];
+let counter;
+let speed;
 
 options = {
  isReplayEnabled: true,
@@ -46,10 +48,14 @@ function update() {
     ball = {
       pos: vec(10, 10)
     };
+    counter = 0;
+    speed = 1;
     return;
   }
 
-  if (input.isJustPressed)
+  counter += 1;
+
+  if (input.isJustPressed && ball.pos.y > 15)
   {
     ball.pos.y -= 15;
   }
@@ -65,14 +71,14 @@ function update() {
   boxesBottom.forEach((box) =>
    {
      color("yellow");
-     box.pos.x -= 1;
+     box.pos.x -= speed;
      rect(box.pos.x, 100 - box.pos.y, 10, box.pos.y);
    }
   );
   boxesTop.forEach((box) =>
    {
      color("yellow");
-     box.pos.x -= 1;
+     box.pos.x -= speed;
      rect(box.pos.x, 0, 10, box.pos.y);
    }
   );
@@ -87,30 +93,39 @@ function update() {
   if (boxesBottom.length < 5)
   {
     addScore(0.2);
+    let a = rnd(0, 40);
+    let b = rnd(0, a);
+    let c = b;
+    if (rnd(0, 2) > 1)
+    {
+      b = a;
+      a = c;
+    }
+
      boxesTop.push(
       {
-      pos: vec(90, rnd(10, 40))
+      pos: vec(rnd(70, 90), a)
      });
      boxesBottom.push({
-      pos: vec(70, rnd(10, 40))
+      pos: vec(rnd(80, 90), b)
      });
   }
-  
-  drawPlatforms();
+
+  if (counter % 300 == 0)
+  {
+    speed += 0.25;
+  }
+ 
+  color("black");
+  a = char("a", ball.pos);
+
+  if (a.isColliding.rect.yellow)
+  {
+   end();
+   boxesBottom = [];
+   boxesTop = [];
+  }
 }
-
-function drawPlatforms() { 
- color("black");
- a = char("a", ball.pos);
-
- if (a.isColliding.rect.yellow)
- {
-  end();
-  boxesBottom = [];
-  boxesTop = [];
- }
-}
-
 addEventListener("load", onLoad);
 </script>
 
