@@ -37,6 +37,7 @@ let fallingBalls;
 let counter;
 let speed;
 let direction;
+let ballLimit = 0;
 
 options = {
  isReplayEnabled: true
@@ -51,6 +52,7 @@ function update() {
     speed = 1;
     fallingBalls = [];
     direction = true;
+    ballLimit = 1;
     return;
   }
  
@@ -82,8 +84,6 @@ function update() {
      color("red");
      ball.pos.y += speed;
      rect(ball.pos.x, ball.pos.y, 10, 5);
-
-
    }
   );
 
@@ -92,7 +92,7 @@ function update() {
   });
 
 
-  if (fallingBalls.length < 8)
+  if (fallingBalls.length < ballLimit)
   {
     addScore(0.2);
     fallingBalls.push(
@@ -101,9 +101,9 @@ function update() {
     });
   }
 
-  if (counter % 600 == 0)
+  if (counter % 300 == 0)
   {
-    speed += 0.1;
+    ballLimit += 1;
   }
 
   color("black");
