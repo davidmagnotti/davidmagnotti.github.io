@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>flappy ball</title>
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height,
+      user-scalable=no, initial-scale=1, maximum-scale=1"
+    />
+    <script src="https://unpkg.com/sounds-some-sounds@3.0.0/build/index.js"></script>
+    <script src="https://unpkg.com/gif-capture-canvas@1.1.0/build/index.js"></script>
+    <script src="https://unpkg.com/pixi.js@5.3.0/dist/pixi.min.js"></script>
+    <script src="https://unpkg.com/pixi-filters@3.1.1/dist/pixi-filters.js"></script>
+    <script src="https://unpkg.com/crisp-game-lib@1.1.1/docs/bundle.js"></script>
+
+<script>
+title = "dodge";
+
+characters = [
+  `
+bbbbbb
+  `
+];
+
+description = `
+    [Tap] to 
+    change 
+    direction
+    and dodge
+`;
+
+let slider;
+let slider_pos;
+
+let fallingBalls;
+let counter;
+let speed;
+let direction;
+
+options = {
+ isReplayEnabled: true
+};
+
+function update() {
+  if (!ticks) {
+    slider_pos = {
+      pos: vec(10, 95)
+    };
+    counter = 0;
+    speed = 1;
+    fallingBalls = [];
+    direction = true;
+    return;
+  }
+ 
+  color("black");
+
+  counter += 1;
+  if (input.isJustPressed)
+  {
+    direction = !direction;
+  }
+  if (direction)
+  {
+    if (slider_pos.pos.x < 90)
+    {
+      slider_pos.pos.x += 1;
+    }
+  }
+  else
+  {
+    if (slider_pos.pos.x > 5)
+    {
+      slider_pos.pos.x -= 1;
+    }
+  }
+
+  // if collides with box, it's game over
+  fallingBalls.forEach((ball) =>
+   {
+     color("red");
+     ball.pos.y += speed;
+     rect(ball.pos.x, ball.pos.y, 10, 5);
+
+
+   }
+  );
+
+  remove(fallingBalls, (box) => {
+    return box.pos.y > 100;
+  });
+
+
+  if (fallingBalls.length < 8)
+  {
+    addScore(0.2);
+    fallingBalls.push(
+     {
+     pos: vec(rnd(0,100), rnd(0,15))
+    });
+  }
+
+  if (counter % 600 == 0)
+  {
+    speed += 0.1;
+  }
+
+  color("black");
+  slider = char("a", slider_pos.pos);
+  if (slider.isColliding.rect.red)
+  {
+    end();
+  }
+}
+addEventListener("load", onLoad);
+</script>
+
+  </head>
+  <body style="background: #eeeeee"></body>
+</html>
