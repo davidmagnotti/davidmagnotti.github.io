@@ -59,7 +59,7 @@ function update() {
     };
     counter = 0;
     speed = 1;
-    fall_speed = 0.7;
+    fall_speed = 0.8;
     return;
   }
 
@@ -67,11 +67,11 @@ function update() {
 
   if (input.isJustPressed && ball.pos.y > 15)
   {
-    ball.pos.y -= 15;
+    ball.pos.y -= 20;
   }
   else
   {
-    if (ball.pos.y < 100)
+    if (ball.pos.y < 98)
     {
       ball.pos.y += fall_speed;
     }
@@ -123,8 +123,7 @@ function update() {
 
   if (counter % 300 == 0)
   {
-    speed += 0.15;
-    fall_speed + 0.1;
+    speed += 0.1;
   }
  
   color("black");

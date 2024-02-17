@@ -101,13 +101,13 @@ function update() {
     speed = 1;
     light_status = 0; // green
     fall_speed = 0;
-    enemy_count = 3;
+    enemy_count = 5;
     first_spawn = true;
 
     // changes go/stop frequency odds (higher is worse odds)
     max_go_odds = 400;
     max_stop_odds = 600;
-    move_speed = 0.3;
+    move_speed = 0.35;
 
     // number of ticks (120==2s) before yellow turns red
     yellow_counter_max = 120;
@@ -138,7 +138,7 @@ function update() {
 
     // always reset to green
     light_status = 0;
-    redgreen_counter_min = 60;
+    redgreen_counter_min = 0;
 
     first_spawn = true;
 
@@ -239,7 +239,7 @@ function update() {
     else if (!enemy_near_spawn && !enemy_near_midway_point && random_enemy == 1)
     {
       enemy.letter = "d";
-      enemy.speed *= 3;
+      enemy.speed *= 4;
     }
 
     enemies.push(enemy);
