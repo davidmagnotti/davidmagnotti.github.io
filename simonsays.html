@@ -2,6 +2,14 @@
 <head>
  <title>Simon Says</title>
  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" /> 
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-5R0LHLD98Q"></script>
+ <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'G-5R0LHLD98Q');
+</script>
 </head>
 <script type="text/javascript">
 // 0 is not started or game over, 1 is active
@@ -73,7 +81,7 @@ function Tap(event)
         bottomBoxY < event.clientY && bottomBoxY + boxHeight > event.clientY)
     {
       box = 3;
-      DrawBox(bottomBoxX, bottomBoxY, colors[box], 300);
+      DrawBox(bottomBoxX, bottomBoxY, colors[box], 1300);
     }
 
     if (box == -1)
