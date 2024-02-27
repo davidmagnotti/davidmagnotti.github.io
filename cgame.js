@@ -397,7 +397,7 @@ image-rendering: pixelated;
         }
         document.body.appendChild(canvas);
         const setSize = () => {
-            const cs = 0.95;
+            const cs = 1;
             const wr = innerWidth / innerHeight;
             const cr = canvasSize.x / canvasSize.y;
             const flgWh = wr < cr;
