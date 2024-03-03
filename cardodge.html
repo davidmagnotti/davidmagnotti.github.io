@@ -1,0 +1,211 @@
+<html>
+    <head>
+        <title>Car Dodge</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <script src="https://unpkg.com/pixi.js@7.4.0/dist/pixi.min.js"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y55LGP63JX"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+    
+          gtag('config', 'G-Y55LGP63JX');
+        </script>
+    </head>
+    <style type="text/css">
+    body
+    {
+        background-color: #333333;
+    }
+    </style>
+    <script type="text/javascript">
+        let redCars = [];
+        let blueCar;
+        let carSpriteSheet = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAABACAYAAAB7jnWuAAAAAXNSR0IArs4c6QAAAvFJREFUaEPVmL1OAzEMx9O9IJZOSH0CpDKiSki8Rge6MvA8DKww9DWQkCpGKvUJKjF1QdD9kHPnq8/5sHNJ1ZKpahP/f7EdO83AHHkMEvUr5Xy1XWmiIzh5iDOsnr0mgzqhH1oVSVDyCANy9HwA1W8jfzYwpgQAtWeM6WhygI447K4EANgJQTgA1KW54mjLkxetLgWoHX/1Uq9bz7N33wEgdpvvrXYUoGQI6MZ0AIW8YN2Pu29sniwAgFWcNjcRAx7wJqELEAkDz2wfqCO+D0E6ABeczWZmsVjYcNLPmPkAlA+wnrdlAURSBsJ1jnayB9Zzu7ucYUHcU+CEYN/i2OQDAeCeBkgCAPDZOQU5u2/X+j1gNd1ewCffrIz5mJhr4R7AQT+hADVrNSHA9a4HjgaAJ6AEAGtytAeFQwAAIA4jJwTNetaMFIXoJABYZmkT0SYgH937gOJCQg2Qiph0LOmJwoV7W8KFhCs1C6XC1JZgn/i+FMOnfgBqDxQFgN1f3Kq17cTv924P6BUCGvs+ACiqvJLB9LoSonCqaMhH4A0sRrXtSB3gRnIhULxrNwjA5bX/hqX8SP5zKhks9rv097yvR9R2pYlOCL5Go+juL7db3+/JIWiFJUEpFgwo/X2gBEDW+0AJAPBSr/eBXHEMjycvwu34aTi06x53O1MSgNptwPzdkE/MhcDdJwOU8gIAoDjaVHngGAC2G3LaEiHweCDcDenkmBd4ZvtAuftJCNIBuKD0PgBA2QBwFHFIl1Fekun7QO8QAECqsA9EA9A2Hz75QADI6b4PBM6s1PSivwc84H8f4JPfxmNzt9mYn+k0CeJ8uTS4VhMCNO7UgaMB4AkoAQC7Y71ArgMAAOIwckKA6/8nAM86bSJCAvKh8YCtBbwXsBaadBIEW/ELCVfCpJQKE5Zgn3jyfYBC0L6gcUNRABC/d9404xivVSWFUw4B3XUfAETUXsnaGxEKp4qGfALewARvbOvfB3IhUJzBnc77wB/h2BpfmfstBAAAAABJRU5ErkJggg==";
+        let score = 0;
+        let highScore = 0;
+        let spritesheet;
+        let keyPressState = [];
+        
+        let scoreDisplay = new PIXI.Text("Score: " + score, {font: "10px Arial", fill: "#00ddee", align: "center", stroke: "#000000", strokeThickness: 3});
+        let highScoreDisplay = new PIXI.Text("High Score: " + highScore, {font: "10px Arial", fill: "#dd00ee", align: "center", stroke: "#000000", strokeThickness: 3});
+
+        const app = new PIXI.Application({width: 640, height: 580});
+        const carData = {
+            frames: {
+                blueCar1: {
+                    frame: { x: 0, y:0, w:32, h:32 },
+                    sourceSize: { w: 32, h: 32 },
+                    spriteSourceSize: { x: 0, y: 0, w: 32, h: 32 }
+                },
+                redCar1: {
+                    frame: { x: 0, y:32, w:32, h:32 },
+                    sourceSize: { w: 32, h: 32 },
+                    spriteSourceSize: { x: 0, y: 0, w: 32, h: 32 }
+                },
+            },
+            meta: {
+                scale: 1
+            },
+            animations: {
+                blueCar: ['blueCar1'],
+                redCar: ['redCar1']
+            }
+        }
+
+        function keydown(e) {
+            keyPressState[e.keyCode] = true;
+        }
+
+        function keyup(e) {
+            keyPressState[e.keyCode] = false;
+        }
+
+        function init()
+        {
+            document.onkeydown = keydown;
+            document.onkeyup = keyup;
+            document.body.appendChild(app.view);
+
+            app.renderer.background.color = 0xaaaaaa;
+
+            const base = new PIXI.BaseTexture(carSpriteSheet);
+            
+            spritesheet = new PIXI.Spritesheet(
+                base,
+                carData
+            );
+            
+            spritesheet.parse();
+
+            // spawn the player
+            blueCar = new PIXI.AnimatedSprite(spritesheet.animations.blueCar);
+            blueCar.position = {x:10, y:10};
+            app.stage.addChild(blueCar);
+            
+            // display a score and high score
+            app.stage.addChild(scoreDisplay);
+            scoreDisplay.y = 500;
+            app.stage.addChild(highScoreDisplay);
+            highScoreDisplay.y = 500;
+            highScoreDisplay.x = 400;
+
+            app.ticker.add((t) => loop(t));
+        }
+
+        function loop(t)
+        {
+            blueCar.pivot.set(16);
+            if (keyPressState[37] && blueCar.x > 16) // left arrow
+            {
+                blueCar.rotation = 4.7;
+                blueCar.x -= 3;
+            }
+            if (keyPressState[38] && blueCar.y > 16) // up arrow
+            {
+                blueCar.rotation = 0;
+                blueCar.y -= 3;
+            }
+            if (keyPressState[39] && blueCar.x < 624) // right arrow
+            {
+                blueCar.rotation = 1.6;
+                blueCar.x += 3;
+            }
+            if (keyPressState[40] && blueCar.y < 464) // down arrow
+            {
+                blueCar.rotation = 3.1;
+                blueCar.y += 3;
+            }
+
+            if (score % 500 == 0)
+            {
+                let newRedCar = new PIXI.AnimatedSprite(spritesheet.animations.redCar);
+                let x = Math.floor(Math.random() * 640);
+                let y = Math.floor(Math.random() * 520);
+                if (blueCar.x > x && blueCar.x < x + 40)
+                {
+                    if (Math.random() < 0.5)
+                    {
+                        x -= 75;
+                    }
+                    else
+                    {
+                        x += 75;
+                    }
+                }
+                if (blueCar.y > y && blueCar.y < y + 40)
+                {
+                    if (Math.random() < 0.5)
+                    {
+                        y -= 75;
+                    }
+                    else
+                    {
+                        y += 75;
+                    }
+                }
+
+                newRedCar.position.x = x;
+                newRedCar.position.y = y;
+                redCars.push(newRedCar);
+                app.stage.addChild(newRedCar);
+            }
+
+            let gameOver = false;
+            for (const redCar of redCars)
+            {
+                redCar.pivot.set(16);
+                if (redCar.x > blueCar.x && redCar.x - blueCar.x > 3)
+                {
+                    redCar.rotation = 4.7;
+                    redCar.x -= Math.floor(Math.random() * 3) + 1;
+                }
+                else if (redCar.y > blueCar.y && redCar.y - blueCar.y > 3)
+                {
+                    redCar.rotation = 0;
+                    redCar.y -= Math.floor(Math.random() * 3) + 1;
+                }
+                else if (redCar.x < blueCar.x && blueCar.x - redCar.x > 3)
+                {
+                    redCar.x += Math.floor(Math.random() * 3) + 1;
+                    redCar.rotation = 1.6;
+                }
+                else if (redCar.y < blueCar.y && blueCar.y - redCar.y > 3)
+                {
+                    redCar.y += Math.floor(Math.random() * 3) + 1;
+                    redCar.rotation = 3.1;
+                }
+                
+                // if red car runs into blue car, it's game over
+                if ((blueCar.x >= redCar.x - 5 && blueCar.x <= redCar.x + 35) &&
+                (blueCar.y >= redCar.y - 5 && blueCar.y <= redCar.y + 35))
+                {
+                    blueCar.x = Math.floor(Math.random() * 300);
+                    blueCar.y = Math.floor(Math.random() * 300);
+
+                    if (score > highScore)
+                    {
+                        highScore = score;
+                        highScoreDisplay.text = "High Score: " + Math.floor(highScore/100);
+                    }
+                    score = -1;
+                    gameOver = true;
+                    break;
+                }
+            }
+            if (gameOver)
+            {
+                for (const redCar of redCars)
+                {
+                    app.stage.removeChild(redCar);
+                }
+                redCars = [];
+            }
+            score += 1;
+
+            scoreDisplay.text = "Score: " + Math.floor(score/100);
+        }
+    </script>
+    <body onload="init()">
+    </body>
+</html>
