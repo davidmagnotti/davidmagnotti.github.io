@@ -26,7 +26,7 @@
         let boostTimer = 0;
         let redCars = [];
         let blueCar;
-        let carSpriteSheet = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAABACAYAAAB7jnWuAAAAAXNSR0IArs4c6QAAAvFJREFUaEPVmL1OAzEMx9O9IJZOSH0CpDKiSki8Rge6MvA8DKww9DWQkCpGKvUJKjF1QdD9kHPnq8/5sHNJ1ZKpahP/f7EdO83AHHkMEvUr5Xy1XWmiIzh5iDOsnr0mgzqhH1oVSVDyCANy9HwA1W8jfzYwpgQAtWeM6WhygI447K4EANgJQTgA1KW54mjLkxetLgWoHX/1Uq9bz7N33wEgdpvvrXYUoGQI6MZ0AIW8YN2Pu29sniwAgFWcNjcRAx7wJqELEAkDz2wfqCO+D0E6ABeczWZmsVjYcNLPmPkAlA+wnrdlAURSBsJ1jnayB9Zzu7ucYUHcU+CEYN/i2OQDAeCeBkgCAPDZOQU5u2/X+j1gNd1ewCffrIz5mJhr4R7AQT+hADVrNSHA9a4HjgaAJ6AEAGtytAeFQwAAIA4jJwTNetaMFIXoJABYZmkT0SYgH937gOJCQg2Qiph0LOmJwoV7W8KFhCs1C6XC1JZgn/i+FMOnfgBqDxQFgN1f3Kq17cTv924P6BUCGvs+ACiqvJLB9LoSonCqaMhH4A0sRrXtSB3gRnIhULxrNwjA5bX/hqX8SP5zKhks9rv097yvR9R2pYlOCL5Go+juL7db3+/JIWiFJUEpFgwo/X2gBEDW+0AJAPBSr/eBXHEMjycvwu34aTi06x53O1MSgNptwPzdkE/MhcDdJwOU8gIAoDjaVHngGAC2G3LaEiHweCDcDenkmBd4ZvtAuftJCNIBuKD0PgBA2QBwFHFIl1Fekun7QO8QAECqsA9EA9A2Hz75QADI6b4PBM6s1PSivwc84H8f4JPfxmNzt9mYn+k0CeJ8uTS4VhMCNO7UgaMB4AkoAQC7Y71ArgMAAOIwckKA6/8nAM86bSJCAvKh8YCtBbwXsBaadBIEW/ELCVfCpJQKE5Zgn3jyfYBC0L6gcUNRABC/d9404xivVSWFUw4B3XUfAETUXsnaGxEKp4qGfALewARvbOvfB3IhUJzBnc77wB/h2BpfmfstBAAAAABJRU5ErkJggg==";
+        let carSpriteSheet = "data:image/png;base64,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";
         let score = 0;
         let highScore = 0;
         let spritesheet;
@@ -43,8 +43,33 @@
                     sourceSize: { w: 32, h: 32 },
                     spriteSourceSize: { x: 0, y: 0, w: 32, h: 32 }
                 },
+                blueCar2: {
+                    frame: { x: 32, y:0, w:32, h:32 },
+                    sourceSize: { w: 32, h: 32 },
+                    spriteSourceSize: { x: 0, y: 0, w: 32, h: 32 }
+                },
                 redCar1: {
+                    frame: { x: 64, y:0, w:32, h:32 },
+                    sourceSize: { w: 32, h: 32 },
+                    spriteSourceSize: { x: 0, y: 0, w: 32, h: 32 }
+                },
+                pinkCar: {
                     frame: { x: 0, y:32, w:32, h:32 },
+                    sourceSize: { w: 32, h: 32 },
+                    spriteSourceSize: { x: 0, y: 0, w: 32, h: 32 }
+                },
+                boost1: {
+                    frame: { x: 32, y:32, w:32, h:32 },
+                    sourceSize: { w: 32, h: 32 },
+                    spriteSourceSize: { x: 0, y: 0, w: 32, h: 32 }
+                },
+                boost2: {
+                    frame: { x: 64, y:32, w:32, h:32 },
+                    sourceSize: { w: 32, h: 32 },
+                    spriteSourceSize: { x: 0, y: 0, w: 32, h: 32 }
+                },
+                boost3: {
+                    frame: { x: 0, y:64, w:32, h:32 },
                     sourceSize: { w: 32, h: 32 },
                     spriteSourceSize: { x: 0, y: 0, w: 32, h: 32 }
                 },
@@ -54,7 +79,10 @@
             },
             animations: {
                 blueCar: ['blueCar1'],
-                redCar: ['redCar1']
+                redCar: ['redCar1'],
+                blueCarBoost: ['blueCar1', 'pinkCar'],
+                redCarHiding: ['redCar1', 'pinkCar'],
+                boost: ['boost1', 'boost2', 'boost3', 'boost2', 'boost1']
             }
         }
 
@@ -67,7 +95,7 @@
         }
 
         function click(e) {
-            if (e.clientX < 640 && e.clientY < 480)
+            if (e.clientX < 400 && e.clientY < 480)
             {
                 lastTouch = {x: e.clientX, y: e.clientY};
             }
@@ -79,7 +107,7 @@
             document.onkeydown = keydown;
             document.onkeyup = keyup;
             
-            app = new PIXI.Application({width: 640, height: 580});
+            app = new PIXI.Application({width: 400, height: 540});
             document.body.appendChild(app.view);
 
             app.renderer.background.color = 0xaaaaaa;
@@ -95,46 +123,62 @@
 
             // spawn the player
             blueCar = new PIXI.AnimatedSprite(spritesheet.animations.blueCar);
-            blueCar.position = {x:10, y:10};
+            blueCar.position = {x:200, y:200};
             app.stage.addChild(blueCar);
             
             // display a score and high score
-            app.stage.addChild(scoreDisplay);
             scoreDisplay.y = 500;
-            app.stage.addChild(highScoreDisplay);
-            highScoreDisplay.y = 500;
-            highScoreDisplay.x = 400;
+            app.stage.addChild(scoreDisplay);
 
+            highScoreDisplay.y = 500;
+            highScoreDisplay.x = 240;
+            app.stage.addChild(highScoreDisplay);
+
+            // add the main game loop
             app.ticker.add((t) => loop(t));
         }
 
         function loop(t)
         {
+            scoreDisplay.text = "Score: " + score;
+
             // chance of spawning in a boost, only if one isn't already there
             if (!isBoostAvailable && Math.floor(Math.random() * 100) == 1 && boostTimer == 0)
             {
-                let rx = Math.floor(Math.random() * 500) + 10;
+                let rx = Math.floor(Math.random() * 350) + 10;
                 let ry = Math.floor(Math.random() * 480) + 10;
+
+                boost = new PIXI.AnimatedSprite(spritesheet.animations.boost);
+                boost.animationSpeed = 0.2;
+                boost.play();
+                boost.x = rx;
+                boost.y = ry;
+
                 boostPosition = {x: rx, y: ry};
-                boost = new PIXI.Graphics();
-                boost.beginFill(0xFF0000);
-                boost.lineStyle(2, 0xFFCC00);
-                boost.drawRect(rx, ry, 30, 30);
+
                 app.stage.addChild(boost);
 
                 isBoostAvailable = true;
-                score += 1;
             }
 
+            // if there's a boost, check if we picked it up
             if (isBoostAvailable)
             {
                 if (blueCar.x > boostPosition.x - 30 && blueCar.x < boostPosition.x + 30 &&
                 blueCar.y > boostPosition.y - 30 && blueCar.y < boostPosition.y + 30)
                 {
                     boostTimer = 500;
-                    score += 1;
                     isBoostAvailable = false;
                     app.stage.removeChild(boost);
+                    
+                    // remove the non-boosted player and add boosted
+                    let pos = blueCar.position ;
+                    app.stage.removeChild(blueCar);
+                    blueCar = new PIXI.AnimatedSprite(spritesheet.animations.blueCarBoost);
+                    blueCar.animationSpeed = 0.1;
+                    blueCar.play();
+                    blueCar.position = pos;
+                    app.stage.addChild(blueCar);
                 }
             }
 
@@ -142,7 +186,17 @@
             if (boostTimer > 0)
             {
                 boostTimer -= 1;
-                movementSpeed += 3;
+                movementSpeed += 1;
+
+                // If the boostTimer hits 0 after this decrement, stop the animation
+                if (boostTimer == 0)
+                {
+                    let pos = blueCar.position;
+                    app.stage.removeChild(blueCar);
+                    blueCar = new PIXI.AnimatedSprite(spritesheet.animations.blueCar);
+                    blueCar.position = pos;
+                    app.stage.addChild(blueCar);
+                }
             }
 
             // conduct movement based off arrow presses
@@ -200,32 +254,57 @@
                 lastTouch = null;
             }
 
-            if (redCars.length < score + 1)
+            
+            if (blueCar.x < 20)
             {
-                let newRedCar = new PIXI.AnimatedSprite(spritesheet.animations.redCar);
-                let x = Math.floor(Math.random() * 640);
-                let y = Math.floor(Math.random() * 520);
-                if (blueCar.x > x && blueCar.x < x + 40)
+                blueCar.x = 20;
+            }
+            else if (blueCar.x > 350)
+            {
+                blueCar.x = 350;
+            }
+
+            if (blueCar.y < 20)
+            {
+                blueCar.y = 20;
+            }
+            else if (blueCar.y > 460)
+            {
+                blueCar.y = 460;
+            }
+
+            let increaseOnce = false;
+            while (redCars.length < score + 1 && boostTimer == 0)
+            {
+                if (!increaseOnce)
                 {
-                    if (Math.random() < 0.5)
-                    {
-                        x -= 75;
-                    }
-                    else
-                    {
-                        x += 75;
-                    }
+                    increaseOnce = true;
+                    score += 1;
                 }
-                if (blueCar.y > y && blueCar.y < y + 40)
+                let newRedCar = new PIXI.AnimatedSprite(spritesheet.animations.redCar);
+                let x = Math.floor(Math.random() * 300);
+                let y = Math.floor(Math.random() * 300);
+                
+                let r = Math.floor(Math.random() * 4);
+                if (r == 1)
                 {
-                    if (Math.random() < 0.5)
-                    {
-                        y -= 75;
-                    }
-                    else
-                    {
-                        y += 75;
-                    }
+                    x = Math.random() * 300;
+                    y = 0;
+                }
+                else if (r == 2)
+                {
+                    x = Math.random() * 300;
+                    y = 600;
+                }
+                else if (r == 3)
+                {
+                    x = 400;
+                    y = Math.random() * 400;
+                }
+                else
+                {
+                    x = 0;
+                    y = Math.random() * 400;
                 }
 
                 newRedCar.position.x = x;
@@ -237,44 +316,77 @@
             let gameOver = false;
             for (const redCar of redCars)
             {
+                let offset = 1;
+                if (boostTimer > 0)
+                {
+                    offset = -2;
+                }
                 redCar.pivot.set(16);
                 if (redCar.x > blueCar.x && redCar.x - blueCar.x > 3)
                 {
                     redCar.rotation = 4.7;
-                    redCar.x -= Math.floor(Math.random() * 2) + 1;
+                    redCar.x -= Math.floor(Math.random() * 2) + offset;
                 }
                 else if (redCar.y > blueCar.y && redCar.y - blueCar.y > 3)
                 {
                     redCar.rotation = 0;
-                    redCar.y -= Math.floor(Math.random() * 2) + 1;
+                    redCar.y -= Math.floor(Math.random() * 2) + offset;
                 }
                 else if (redCar.x < blueCar.x && blueCar.x - redCar.x > 3)
                 {
-                    redCar.x += Math.floor(Math.random() * 2) + 1;
+                    redCar.x += Math.floor(Math.random() * 2) + offset;
                     redCar.rotation = 1.6;
                 }
                 else if (redCar.y < blueCar.y && blueCar.y - redCar.y > 3)
                 {
-                    redCar.y += Math.floor(Math.random() * 2) + 1;
+                    redCar.y += Math.floor(Math.random() * 2) + offset;
                     redCar.rotation = 3.1;
                 }
-                
-                // if red car runs into blue car, it's game over
-                if ((blueCar.x >= redCar.x - 5 && blueCar.x <= redCar.x + 35) &&
-                (blueCar.y >= redCar.y - 5 && blueCar.y <= redCar.y + 35))
-                {
-                    blueCar.x = Math.floor(Math.random() * 300);
-                    blueCar.y = Math.floor(Math.random() * 300);
 
-                    if (score > highScore)
+                // boundary check (necessary if car is 'running away' from player 
+                //   while player is boosted)
+                if (redCar.x < 20)
+                {
+                    redCar.x = 20;
+                }
+                else if (redCar.x > 350)
+                {
+                    redCar.x = 350;
+                }
+
+                if (redCar.y < 20)
+                {
+                    redCar.y = 20;
+                }
+                else if (redCar.y > 460)
+                {
+                    redCar.y = 460;
+                }
+                
+                // if red car runs into blue car, it's game over - unless player is boosted
+                if ((blueCar.x >= redCar.x - 5 && blueCar.x <= redCar.x + 20) &&
+                (blueCar.y >= redCar.y - 5 && blueCar.y <= redCar.y + 20))
+                {
+                    if (boostTimer > 0)
                     {
-                        highScore = score;
-                        highScoreDisplay.text = "High Score: " + highScore;
+                        app.stage.removeChild(redCar);
+                        redCars.splice(redCars.indexOf(redCar), 1);
                     }
-                    lastTouch = null;
-                    score = 0;
-                    gameOver = true;
-                    break;
+                    else
+                    {
+                        blueCar.x = Math.floor(Math.random() * 300);
+                        blueCar.y = Math.floor(Math.random() * 300);
+
+                        if (score > highScore)
+                        {
+                            highScore = score;
+                            highScoreDisplay.text = "High Score: " + highScore;
+                        }
+                        lastTouch = null;
+                        score = 0;
+                        gameOver = true;
+                        break;
+                    }
                 }
             }
             if (gameOver)
@@ -285,7 +397,6 @@
                 }
                 redCars = [];
             }
-            scoreDisplay.text = "Score: " + score;
         }
     </script>
     <body onload="init()">
