@@ -90,12 +90,12 @@
 <body>
 
 <h1 id="author">David Magnotti</h1>
-<h2 id="tagline">Principal Security Engineer @ Amazon</h2>
+<h2 id="tagline">Principal Security Engineer, Amazon Threat Intelligence</h2>
 
 <hr />
 
 <h3 id="links">
-  <a href="https://github.com/davidmagnotti/">GitGitHub</a> |
+  <a href="https://github.com/davidmagnotti/">GitHub</a> |
   <a href="https://www.linkedin.com/in/david-magnotti-a3697835">LinkedIn</a> |
   <a href="https://twitter.com/davidmagnotti">Twitter</a>
 </h3>
@@ -107,13 +107,13 @@
   <p>
     I am a principal security engineer in Amazon Threat Intelligence, where I helped build the core
     capabilities and programs that define Amazon's cyber threat intelligence function. My work focuses on
-    investigations into sophisticated threat activity, including nation-state and well-resourced criminal
-    actors, and on turning those intelligence findings into practical defensive outcomes across Amazon.
+    investigations into sophisticated intrusion activity, including nation-state and well-resourced criminal
+    actors, and on turning those intelligence findings into practical defensive outcomes across AWS.
   </p>
   <p>
-    My background blends threat intelligence, malware and threat analysis, and enough engineering to
+    My background blends threat intelligence, malware and intrusion analysis, and enough engineering to
     prototype and operationalize tooling when needed. The intelligence I lead and advise on informs strategic
-    security decisions across Amazon and feeds the protections offered through AWS security services.
+    security decisions across AWS and feeds the protections offered through AWS security services.
   </p>
 </section>
 
@@ -123,32 +123,34 @@
   <h2 class="subheading">Amazon Threat Intelligence (AWS)</h2>
   <ul>
     <li>
-      Principal security engineer for Amazon Threat Intelligence, helping to design and grow the programs,
+      Principal Security Engineer for Amazon Threat Intelligence, helping to design and grow the programs,
       workflows, and capabilities that underpin Amazon's cyber threat intelligence function.
     </li>
 
     <li>
-      Lead and subject-matter expert for investigations into sophisticated threat activity, 
-      with a focus on nation-state and high-end criminal operations.
+      Lead and subject-matter expert for investigations into sophisticated intrusion activity targeting Amazon
+      and AWS customers, with a focus on nation-state and high-end criminal operations.
     </li>
 
     <li>
       Integration of threat intelligence into AWS security services and infrastructure protections, including:
       <ul>
         <li>
-          <strong>Amazon Inspector</strong> - vulnerability intelligence and enrichment behind
+          <strong>Amazon Inspector</strong> — vulnerability intelligence and enrichment behind
           <a href="https://docs.aws.amazon.com/inspector/v2/APIReference/API_AtigData.html">AtigData</a>,
-          helping connect real-world adversary behavior and exploit trends to cloud workload risk.
+          connecting real-world adversary behavior and exploit trends to cloud workload risk.
         </li>
+
         <li>
-          <strong>Amazon GuardDuty Malware Protection</strong> - intelligence-driven malware analysis
+          <strong>Amazon GuardDuty Malware Protection</strong> — intelligence-driven malware analysis
           and YARA-style signature contributions informing the
           <a href="https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-malware-detection-scan-engine.html">malware scan engine</a>.
         </li>
+
         <li>
-          <strong>MadPot and Sonaris</strong> - contributions to AWS’s honeypot-driven threat
-          intelligence (MadPot) that powers Sonaris, AWS’s active-defense system used to block large-scale
-          attacks against AWS infrastructure.
+          <strong>MadPot and Sonaris</strong> — contributions to AWS’s honeypot-driven threat intelligence
+          (MadPot) that powers Sonaris, AWS’s active-defense system used to block large-scale attacks against
+          AWS infrastructure.
         </li>
       </ul>
     </li>
@@ -160,7 +162,7 @@
 
     <li>
       Co-presenter of Amazon Threat Intelligence’s nation-state research at CYBERWARCON; public summary on the
-      AWS Security Blog:
+      Amazon Security Blog:
       <a href="https://aws.amazon.com/blogs/security/new-amazon-threat-intelligence-findings-nation-state-actors-bridging-cyber-and-kinetic-warfare/">
         nation-state actors bridging cyber and kinetic warfare
       </a>.
@@ -176,40 +178,38 @@
 
   <ul>
     <li>
-      Security software engineer in Microsoft’s Threat Intelligence Center (MSTIC), with contributions across
-      Sysinternals Sysmon, the MEX Debugging Extension, and the Office Readiness Toolkit.
-    </li>
+      Security software engineer in Microsoft’s Threat Intelligence Center (MSTIC), contributing to early
+      investigative tooling and workflows that supported emerging nation-state intrusion analysis.
+      <ul>
+        <li>
+          <strong>Sysinternals Sysmon</strong>
+          (<a href="https://learn.microsoft.com/sysinternals/downloads/sysmon">product page</a>): contributed
+          detection and monitoring features including <em>RawAccessRead</em>, <em>WMI persistence monitoring</em>,
+          and expanded <em>ProcessCreate</em> fields. Contributions were acknowledged in Mark Russinovich’s
+          <a href="https://learn.microsoft.com/sysinternals/books#troubleshooting-with-the-windows-sysinternals-tools">
+            <em>Troubleshooting with the Windows Sysinternals Tools</em>
+          </a>.
+        </li>
 
-    <li>
-      <strong>Sysinternals Sysmon</strong>
-      (<a href="https://learn.microsoft.com/sysinternals/downloads/sysmon">product page</a>):
-      contributed detection and monitoring features including <em>RawAccessRead</em>,
-      <em>WMI persistence monitoring</em>, and additional fields in the <em>ProcessCreate</em> event.
-      Also contributed early implementations in registry and file monitoring that were later refactored by
-      another developer. These contributions were acknowledged in Mark Russinovich’s
-      <a href="https://learn.microsoft.com/sysinternals/books#troubleshooting-with-the-windows-sysinternals-tools">
-        <em>Troubleshooting with the Windows Sysinternals Tools</em>
-      </a>.
-    </li>
+        <li>
+          <strong>MEX Debugging Extension</strong>
+          (<a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/mex-debugger-extension">documentation</a>):
+          implemented enhancements enabling Excel forensic analysis within MEX for Office-focused investigations.
+        </li>
 
-    <li>
-      <strong>MEX Debugging Extension</strong>
-      (<a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/mex-debugger-extension">documentation</a>):
-      implemented enhancements to support Excel forensic analysis within MEX, expanding its usefulness for
-      Office-focused investigations.
-    </li>
-
-    <li>
-      <strong>Office Readiness Toolkit</strong>
-      (<a href="https://learn.microsoft.com/en-us/deployoffice/security/office-readiness-toolkit">tool overview</a>):
-      authored the internal VBA macro-analysis subsystem, including the abstract syntax tree (AST) generator and end-to-end analysis
-      applicstion used for macro migration readiness.
+        <li>
+          <strong>Office Readiness Toolkit</strong>
+          (<a href="https://learn.microsoft.com/en-us/deployoffice/security/office-readiness-toolkit">tool overview</a>):
+          authored the internal VBA macro-analysis subsystem, including the AST generator and full analysis pipeline.
+        </li>
+      </ul>
     </li>
   </ul>
+
 </section>
 
 <section id="open-source">
-  <h1 class="section-title">Open Source Tools</h1>
+  <h1 class="section-title">Open Source &amp; Tools</h1>
   <p>
     I publish some of my tooling and experiments publicly on GitHub, mostly around detection engineering,
     reverse engineering, and automation.
@@ -220,7 +220,7 @@
       <a href="https://github.com/davidmagnotti">github.com/davidmagnotti</a>
     </li>
     <li>
-      Selected projects include work on YARA-X and other experiments in parsing, detection, and threat
+      Selected projects include work on YARA-X and experiments in parsing, detection logic, and threat
       intelligence workflows.
     </li>
   </ul>
@@ -236,36 +236,31 @@
   <h2 class="subheading">Coding</h2>
   <ul>
     <li>
-      <a href="/biocode.html">Biocode</a> &mdash;
-      Python coding puzzles in the browser, focused on bioinformatics, with solutions generated using a local LLM.
+      <a href="/biocode.html">Biocode</a> — Python coding puzzles in the browser focused on bioinformatics,
+      with solutions generated using a local LLM.
     </li>
   </ul>
 
   <h2 class="subheading">Games</h2>
   <ul>
     <li>
-      <a href="/cardodge.html">car battle</a> &mdash;
-      Drive using tap/click or arrow keys, avoid getting hit, and use boosts to destroy enemy cars
-      (built with <a href="https://pixijs.com/">pixi-js</a>).
+      <a href="/cardodge.html">car battle</a> — Drive using tap/click or arrow keys, avoid getting hit, and
+      use boosts to destroy enemy cars (built with <a href="https://pixijs.com/">pixi-js</a>).
     </li>
     <li>
-      <a href="/redlight.html">red light</a> &mdash;
-      Drive to the finish line and don’t move on red
-      (using <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>).
+      <a href="/redlight.html">red light</a> — Drive to the finish line and don’t move on red (using
+      <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>).
     </li>
     <li>
-      <a href="/dodge.html">dodge</a> &mdash;
-      Tap to change slider direction and dodge obstacles
-      (using <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>).
+      <a href="/dodge.html">dodge</a> — Tap to change slider direction and dodge obstacles (using
+      <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>).
     </li>
     <li>
-      <a href="/flyingship.html">flying ship</a> &mdash;
-      Keep the ship between the pillars
-      (using <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>).
+      <a href="/flyingship.html">flying ship</a> — Keep the ship between the pillars (using
+      <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>).
     </li>
     <li>
-      <a href="/simonsays.html">simon says</a> &mdash;
-      Watch and copy the pattern.
+      <a href="/simonsays.html">simon says</a> — Watch and copy the pattern.
     </li>
   </ul>
 </section>
