@@ -15,15 +15,26 @@
  {
   background-color: #ffffff;
   color: #000000;
-  font-family: "San Serif", "Calibri";
+  font-family: "San Serif", "Calibri", sans-serif;
+  margin: 0;
+  padding: 0 10px 40px 10px;
  }
+
  h1#author
  {
   background-color: #333333;
   border-radius: 10px;
   color: #f0f0f0;
   text-align: center;
-  padding: 5px;
+  padding: 10px;
+  margin-top: 10px;
+ }
+
+ h2#tagline
+ {
+  text-align: center;
+  font-weight: normal;
+  margin-top: 10px;
  }
 
  h3#links
@@ -31,33 +42,131 @@
   text-align: center;
  }
 
- h1#projects
+ h1.section-title
  {
   border-radius: 10px;
   background-color: #0055ee;
   color: #ffffff;
-  width: 120px;
-  padding: 5px;
+  padding: 5px 10px;
+  display: inline-block;
+  margin-top: 25px;
+ }
+
+ section
+ {
+  max-width: 800px;
+  margin: 0 auto;
+ }
+
+ ul
+ {
+  max-width: 800px;
+ }
+
+ hr
+ {
+  margin: 15px 0;
  }
  </style>
 </head>
 <body>
 <h1 id="author">David Magnotti</h1>
+<h2 id="tagline">Principal Engineer - Threat Intelligence, Amazon Web Services</h2>
 <hr />
-<h3 id="links"><a href="https://github.com/davidmagnotti/">GitHub</a> | <a href="https://www.linkedin.com/in/david-magnotti-a3697835">LinkedIn</a> | <a href="https://twitter.com/davidmagnotti">Twitter</a></h3>
+<h3 id="links">
+  <a href="https://github.com/davidmagnotti/">GitHub</a> |
+  <a href="https://www.linkedin.com/in/david-magnotti-a3697835">LinkedIn</a> |
+  <a href="https://twitter.com/davidmagnotti">Twitter</a>
+</h3>
 <hr />
-<h1 id="projects">Projects</h1>
- <h2>Coding</h2>
- <ul>
-  <li><a href="/biocode.html">Biocode</a> | Complete Python coding puzzles to further your knowledge of Bioinformatics, entirely in your web browser! (solutions generated using Meta's <a href="https://ollama.com/library/llama3.2">Llama3.2</a>)</li>
- </ul>
- <h2>Games</h2>
- <ul>
-  <li><a href="/cardodge.html">car battle</a> | Drive using tap/click or arrow keys, avoid getting hit, get boost to destroy enemy cars (using <a href="https://pixijs.com/">pixi-js</a>)</li>
-  <li><a href="/redlight.html">red light</a> | Drive to the finish line, don't go on red (using <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>)</li>
-  <li><a href="/dodge.html">dodge</a> | Tap to change slider direction and dodge (using <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>)</li>
-  <li><a href="/flyingship.html">flying ship</a> | keep the ship between the pillars (using <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>)</li>
-  <li><a href="/simonsays.html">simon says</a> | copy the pattern</li>
- </ul>
+
+<section id="about">
+  <h1 class="section-title">About</h1>
+  <p>
+    I design and build large-scale threat-intelligence systems that protect cloud customers
+    from nation-state and criminal intrusion activity. My work focuses on translating investigation insights
+    into scalable defensive capabilities across distributed systems.
+  </p>
+</section>
+
+<section id="selected-work">
+  <h1 class="section-title">Selected Work</h1>
+  <ul>
+    <li>
+      Principal engineer for threat-intelligence systems at AWS, delivering protections for workloads
+      running at hyperscale.
+    </li>
+    <li>
+      Former security software engineer in Microsoft’s Threat Intelligence Center (MSTIC), working on large-scale systems
+      for advanced intrusion activity.
+    </li>
+    <li>
+      Speaker at industry conferences (including AWS re:Inforce and CYBERWARCON) on scaling threat
+      intelligence and investigative findings.
+    </li>
+  </ul>
+</section>
+
+<section id="open-source">
+  <h1 class="section-title">Open Source &amp; Tools</h1>
+  <p>
+    I publish some of my tooling and experiments publicly on GitHub:
+  </p>
+  <ul>
+    <li>
+      <strong>GitHub profile:</strong>
+      <a href="https://github.com/davidmagnotti">github.com/davidmagnotti</a>
+    </li>
+    <li>
+      Selected projects include work on YARA-X.
+    </li>
+  </ul>
+</section>
+
+<section id="hobby-projects">
+  <h1 class="section-title">Hobby Projects</h1>
+  <p>
+    I built small browser games and coding experiments as a way to
+    stay sharp and decompress. They’re not representative of my day job, but they were fun to make:
+  </p>
+
+  <h2>Coding</h2>
+  <ul>
+    <li>
+      <a href="/biocode.html">Biocode</a> &mdash;
+      Complete Python coding puzzles in the browser, focused on bioinformatics. Solutions are
+      generated automatically using a local LLM.
+    </li>
+  </ul>
+
+  <h2>Games</h2>
+  <ul>
+    <li>
+      <a href="/cardodge.html">car battle</a> &mdash;
+      Drive using tap/click or arrow keys, avoid getting hit, and get boosts to destroy enemy cars
+      (built with <a href="https://pixijs.com/">pixi-js</a>).
+    </li>
+    <li>
+      <a href="/redlight.html">red light</a> &mdash;
+      Drive to the finish line and don’t move on red
+      (using <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>).
+    </li>
+    <li>
+      <a href="/dodge.html">dodge</a> &mdash;
+      Tap to change slider direction and dodge obstacles
+      (using <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>).
+    </li>
+    <li>
+      <a href="/flyingship.html">flying ship</a> &mdash;
+      Keep the ship between the pillars
+      (using <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>).
+    </li>
+    <li>
+      <a href="/simonsays.html">simon says</a> &mdash;
+      Watch and copy the pattern.
+    </li>
+  </ul>
+</section>
+
 </body>
 </html>
