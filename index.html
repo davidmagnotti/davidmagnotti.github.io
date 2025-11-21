@@ -2,88 +2,105 @@
 <head>
  <title>David Magnotti</title>
  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" /> 
+
+ <!-- Google Analytics -->
  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y55LGP63JX"></script>
  <script>
    window.dataLayer = window.dataLayer || [];
    function gtag(){dataLayer.push(arguments);}
    gtag('js', new Date());
-
    gtag('config', 'G-Y55LGP63JX');
  </script>
+
  <style type="text/css">
- body
- {
+ body {
   background-color: #ffffff;
   color: #000000;
   font-family: "San Serif", "Calibri", sans-serif;
   margin: 0;
   padding: 0 10px 40px 10px;
+  line-height: 1.45;
  }
 
- h1#author
- {
+ /* RESET DEFAULT SAFARI H1/H2/H3 MARGINS */
+ h1, h2, h3 {
+   margin: 0;
+   padding: 0;
+ }
+
+ h1#author {
   background-color: #333333;
   border-radius: 10px;
   color: #f0f0f0;
   text-align: center;
-  padding: 10px;
-  margin-top: 10px;
+  padding: 14px;
+  margin-top: 18px;
  }
 
- h2#tagline
- {
+ h2#tagline {
   text-align: center;
   font-weight: normal;
-  margin-top: 10px;
+  margin-top: 8px;
+  margin-bottom: 12px;
  }
 
- h3#links
- {
+ h3#links {
   text-align: center;
+  margin-top: 8px;
+  margin-bottom: 12px;
  }
 
- h1.section-title
- {
+ h1.section-title {
   border-radius: 10px;
   background-color: #0055ee;
   color: #ffffff;
-  padding: 5px 10px;
+  padding: 6px 12px;
   margin-top: 28px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   display: inline-block;
  }
 
- section
- {
+ section {
   max-width: 800px;
   margin: 0 auto;
  }
 
- ul
- {
-  max-width: 800px;
+ p {
+  margin-top: 0;
+  margin-bottom: 14px;
  }
 
- hr
- {
-  margin: 15px 0;
+ ul {
+  margin-top: 0;
+  margin-bottom: 18px;
+  padding-left: 20px;
+ }
+
+ hr {
+  margin: 16px 0;
  }
  </style>
 </head>
+
 <body>
+
 <h1 id="author">David Magnotti</h1>
 <h2 id="tagline">Principal Engineer, Amazon Threat Intelligence</h2>
+
 <hr />
+
 <h3 id="links">
   <a href="https://github.com/davidmagnotti/">GitHub</a> |
   <a href="https://www.linkedin.com/in/david-magnotti-a3697835">LinkedIn</a> |
   <a href="https://twitter.com/davidmagnotti">Twitter</a>
 </h3>
+
 <hr />
 
 <section id="about">
   <h1 class="section-title">About</h1>
-  <p>I design and build large-scale threat-intelligence systems that protect cloud customers
+  <p>
+    I design and build large-scale threat-intelligence systems that protect cloud customers
     from nation-state and criminal intrusion activity. My work focuses on translating investigation insights
     into scalable defensive capabilities across distributed systems.
   </p>
@@ -118,7 +135,7 @@
       <a href="https://github.com/davidmagnotti">github.com/davidmagnotti</a>
     </li>
     <li>
-      Selected projects include work on YARA-X.
+      Key project includes work on YARA-X.
     </li>
   </ul>
 </section>
@@ -133,7 +150,7 @@
   <h2>Coding</h2>
   <ul>
     <li>
-      <a href="/biocode.html">Biocode</a> &mdash;
+      <a href="/biocode.html">Biocode</a> —
       Complete Python coding puzzles in the browser, focused on bioinformatics. Solutions are
       generated automatically using a local LLM.
     </li>
@@ -142,27 +159,27 @@
   <h2>Games</h2>
   <ul>
     <li>
-      <a href="/cardodge.html">car battle</a> &mdash;
+      <a href="/cardodge.html">car battle</a> —
       Drive using tap/click or arrow keys, avoid getting hit, and get boosts to destroy enemy cars
       (built with <a href="https://pixijs.com/">pixi-js</a>).
     </li>
     <li>
-      <a href="/redlight.html">red light</a> &mdash;
+      <a href="/redlight.html">red light</a> —
       Drive to the finish line and don’t move on red
       (using <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>).
     </li>
     <li>
-      <a href="/dodge.html">dodge</a> &mdash;
+      <a href="/dodge.html">dodge</a> —
       Tap to change slider direction and dodge obstacles
       (using <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>).
     </li>
     <li>
-      <a href="/flyingship.html">flying ship</a> &mdash;
+      <a href="/flyingship.html">flying ship</a> —
       Keep the ship between the pillars
       (using <a href="https://github.com/abagames/crisp-game-lib?tab=readme-ov-file">crisp-game-lib</a>).
     </li>
     <li>
-      <a href="/simonsays.html">simon says</a> &mdash;
+      <a href="/simonsays.html">simon says</a> —
       Watch and copy the pattern.
     </li>
   </ul>
